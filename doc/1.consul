@@ -1,0 +1,5 @@
+启动
+ ./consul agent -ui -dev/server --client 0.0.0.0 
+ 
+ 
+ ui http://192.168.220.129:8500

@@ -1,0 +1,12 @@
+.settings/
+*/.DS_Store
+.DS_Store
+.project
+*/.project
+.classpath
+*/.classpath
+target/
+*.jar
+logs/
+dist/
+node_modules/

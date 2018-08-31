@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:util="http://www.springframework.org/schema/util" xmlns:task="http://www.springframework.org/schema/task" 
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"  
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://code.alibabatech.com/schema/dubbo  http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	<!-- 通过注册中心链接监控平台 -->
+	<dubbo:monitor protocol="registry"/>
+    <dubbo:application name="${spring.application.name}" logger="slf4j" owner="hdf" />
+    <!-- 注册中心地址 -->  
+    <dubbo:registry address="${dubbo.registry.address}" timeout="10000"  file="../registry/cache" /> 
+    <dubbo:protocol name="dubbo" port="${dubbo.port}" serialization="${dubbo.serialization}" />
+    <dubbo:provider server="netty4" accepts="${dubbo.provider.accepts}"  timeout="${dubbo.provider.timeout}" threads="${dubbo.provider.threads}" threadpool="${dubbo.provider.threadpool}" executes="${dubbo.provider.executes}" actives="${dubbo.provider.actives}" retries="${dubbo.provider.retries}" />
+   	 <dubbo:consumer check="false" client="netty4" />
+    <dubbo:service ref="userInfoServiceImpl"   interface="com.seezoon.dubbo.api.UserInfoService" />  
+</beans>
