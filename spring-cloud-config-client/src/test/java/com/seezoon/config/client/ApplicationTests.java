@@ -24,6 +24,7 @@ public  class ApplicationTests {
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 	@Autowired
 	private Environment environment;
+	//官方推荐用git + spring bus 来做配置中心，简单项目最好还是直接用spring-cloud-zookeeper-config + zkUI 自动完成参数刷新
 	@Test
 	public void t1() {
 		System.out.println(environment.getProperty("author.name"));
