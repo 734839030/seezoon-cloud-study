@@ -30,7 +30,8 @@
 		<module>dubbo-consumer</module>
 		<module>spring-cloud-provider</module>
 		<module>spring-cloud-consumer</module>
-    <module>spring-cloud-zuul</module>
+   		<module>spring-cloud-zuul</module>
+   	    <module>druid-double-datasource</module>
   </modules>
 	<dependencyManagement>
 		<dependencies>
