@@ -30,8 +30,10 @@ public class DataSourceConfig {
 	public SqlSessionFactory sqlSessionFactoryOne(@Qualifier("dataSourceOne")  DataSource dataSource) throws Exception {
 		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource);
-		sessionFactory.setMapperLocations(mapperLocations);
-		//sessionFactory.setConfigLocation(configLocation);
+		
+		//sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mappings/*.xml"));
+		sessionFactory.setMapperLocations(mapperLocations);//上面的写法也可以
+		//sessionFactory.setConfigLocation(configLocation);//分页插件 拦截器在这个配置文件中
 		return sessionFactory.getObject();
 	}
 	
